@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page_heading }} | GeoGwalior{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <div class="eyebrow">Digital Collection</div>
+    <h1>{{ page_heading }}</h1>
+    <p>Enter the artifact information below. Fields can be left blank when the information is not available.</p>
+</section>
+
+<section class="card form-container">
+    <form method="POST">
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="sr_no">Sr No</label>
+                <input id="sr_no" name="sr_no" value="{{ record.sr_no or '' if record else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="date">Date</label>
+                <input id="date" name="date" value="{{ record.date or '' if record else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="accession_no">Accession No</label>
+                <input id="accession_no" name="accession_no" value="{{ record.accession_no or '' if record else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="code_no">Code No</label>
+                <input id="code_no" name="code_no" value="{{ record.code_no or '' if record else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="object_name">Object Name</label>
+                <input id="object_name" name="object_name" value="{{ record.object_name or '' if record else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="pieces">Pieces</label>
+                <input id="pieces" name="pieces" value="{{ record.pieces or '' if record else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="category">Category</label>
+                <input id="category" name="category" value="{{ record.category or '' if record else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="material">Material</label>
+                <input id="material" name="material" value="{{ record.material or '' if record else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="dimension">Dimension</label>
+                <input id="dimension" name="dimension" value="{{ record.dimension or '' if record else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="form">Form</label>
+                <input id="form" name="form" value="{{ record.form or '' if record else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="region">Region</label>
+                <input id="region" name="region" value="{{ record.region or '' if record else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="purchase_date">Purchase Date</label>
+                <input id="purchase_date" name="purchase_date" value="{{ record.purchase_date or '' if record else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="amount">Amount</label>
+                <input id="amount" name="amount" value="{{ record.amount or '' if record else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="historical_period">Historical Period</label>
+                <input id="historical_period" name="historical_period" value="{{ record.historical_period or '' if record else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="creator">Creator</label>
+                <input id="creator" name="creator" value="{{ record.creator or '' if record else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="museum_name">Museum Name</label>
+                <input id="museum_name" name="museum_name" value="{{ record.museum_name or '' if record else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="exhibition_name">Exhibition Name</label>
+                <input id="exhibition_name" name="exhibition_name" value="{{ record.exhibition_name or '' if record else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="image_url">Image URL</label>
+                <input type="url" id="image_url" name="image_url" value="{{ record.image_url or '' if record else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="video_url">Video URL</label>
+                <input type="url" id="video_url" name="video_url" value="{{ record.video_url or '' if record else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="model_3d_url">3D Model URL</label>
+                <input type="url" id="model_3d_url" name="model_3d_url" value="{{ record.model_3d_url or '' if record else '' }}">
+            </div>
+            <div class="form-group full">
+                <label for="remarks">Remarks</label>
+                <textarea id="remarks" name="remarks">{{ record.remarks or '' if record else '' }}</textarea>
+            </div>
+            <div class="form-group full">
+                <label for="description">Description</label>
+                <textarea id="description" name="description">{{ record.description or '' if record else '' }}</textarea>
+            </div>
+            <div class="form-group full">
+                <label for="cultural_significance">Cultural Significance</label>
+                <textarea id="cultural_significance" name="cultural_significance">{{ record.cultural_significance or '' if record else '' }}</textarea>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Save Artifact</button>
+            <a href="{{ url_for('dashboard') }}" class="btn btn-warning">Cancel</a>
+        </div>
+    </form>
+</section>
+{% endblock %}

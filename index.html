@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GeoGwalior | GSI Geoscience Museum</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='stylesheet.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+          rel="stylesheet">
+</head>
+
+
+<body class="museum-page">
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header class="museum-header">
+
+    <nav class="museum-nav">
+
+        <a href="{{ url_for('index') }}" class="museum-logo">
+
+            <span class="logo-mark">G</span>
+
+            <span class="logo-text">
+                <strong>GeoGwalior</strong>
+                <small>GSI GEOSCIENCE MUSEUM · GWALIOR</small>
+            </span>
+
+        </a>
+
+
+        <div class="nav-links">
+
+            <a href="{{ url_for('index') }}">
+                Home
+            </a>
+
+            <a href="#about">
+                About
+            </a>
+
+            <a href="#galleries">
+                Galleries
+            </a>
+
+            <a href="#collection">
+                Collection
+            </a>
+
+            <a href="#visit">
+                Visit
+            </a>
+
+            {% if current_user.is_authenticated %}
+
+                <a href="{{ url_for('dashboard') }}"
+                   class="admin-link">
+                    Admin
+                </a>
+
+            {% else %}
+
+                <a href="{{ url_for('login') }}"
+                   class="admin-link">
+                    Admin Login
+                </a>
+
+            {% endif %}
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="museum-hero">
+
+    <div class="hero-image">
+
+        <img
+            src="https://www.robinage.com/wp-content/uploads/2025/01/Geoscience-Museum-.jpg"
+            alt="GSI Geoscience Museum Gwalior"
+        >
+
+    </div>
+
+    <div class="hero-overlay"></div>
+
+
+    <div class="hero-content">
+
+        <p class="eyebrow">
+            GSI GEOSCIENCE MUSEUM · GWALIOR
+        </p>
+
+        <h1>
+            Explore the story<br>
+            of Earth.
+        </h1>
+
+        <p>
+            From ancient fossils to minerals, meteorites and
+            the forces that shape our planet.
+        </p>
+
+        <a href="{{ url_for('artifacts') }}"
+           class="btn-primary">
+            Explore the Collection
+            <span>→</span>
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section class="museum-intro"
+         id="about">
+
+    <div class="intro-number">
+        01
+    </div>
+
+
+    <div class="intro-content">
+
+        <p class="section-label">
+            ABOUT THE MUSEUM
+        </p>
+
+        <h2>
+            Where Earth's history
+            comes alive.
+        </h2>
+
+        <p>
+            The GSI Geoscience Museum in Gwalior is a
+            dedicated space for exploring the geological
+            history of our planet.
+        </p>
+
+        <p>
+            Housed in the historic Victoria Market Building,
+            the museum brings together geological specimens,
+            fossils, minerals, interactive exhibits and
+            stories about the evolution of life on Earth.
+        </p>
+
+        <p>
+            The museum was inaugurated in December 2024
+            and was developed by the Geological Survey of
+            India to encourage public interest and learning
+            in geoscience.
+        </p>
+
+
+        <!-- FACT STRIP -->
+
+        <div class="museum-facts">
+
+            <div class="fact">
+
+                <strong>2024</strong>
+
+                <span>
+                    Inaugurated
+                </span>
+
+            </div>
+
+
+            <div class="fact">
+
+                <strong>02</strong>
+
+                <span>
+                    Galleries
+                </span>
+
+            </div>
+
+
+            <div class="fact">
+
+                <strong>Gwalior</strong>
+
+                <span>
+                    Madhya Pradesh
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     GALLERIES
+===================================================== -->
+
+<section class="galleries-section"
+         id="galleries">
+
+    <div class="section-heading">
+
+        <div>
+
+            <p class="section-label">
+                02 — THE MUSEUM
+            </p>
+
+            <h2>
+                Explore the galleries.
+            </h2>
+
+        </div>
+
+        <p>
+            Discover Earth's geological diversity and the
+            evolution of life through real exhibits and
+            rare specimens.
+        </p>
+
+    </div>
+
+
+
+    <div class="gallery-grid">
+
+
+        <!-- GALLERY I -->
+
+        <article class="gallery-card">
+
+            <div class="gallery-image">
+
+                <img
+                    src="https://pbs.twimg.com/media/GqMkjIfXgAAqNoY.jpg"
+                    alt="Interior of GSI Geoscience Museum Gwalior"
+                >
+
+            </div>
+
+
+            <div class="gallery-content">
+
+                <span class="gallery-number">
+                    GALLERY I
+                </span>
+
+                <h3>
+                    Planet Earth:
+                    <br>
+                    Its Uniqueness in Diversity
+                </h3>
+
+                <p>
+                    Explore rocks, minerals, meteorites and
+                    the geological forces that shape our planet.
+                </p>
+
+                <div class="gallery-accent earth-accent"></div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- GALLERY II -->
+
+        <article class="gallery-card">
+
+            <div class="gallery-image">
+
+                <img
+                    src="https://pbs.twimg.com/media/GqMkjMhXkAA_BXe.jpg"
+                    alt="Dinosaur exhibit at GSI Geoscience Museum Gwalior"
+                >
+
+            </div>
+
+
+            <div class="gallery-content">
+
+                <span class="gallery-number">
+                    GALLERY II
+                </span>
+
+                <h3>
+                    Evolution of Life
+                    <br>
+                    on Earth
+                </h3>
+
+                <p>
+                    Journey through Earth's history and discover
+                    the evolution of life from ancient organisms
+                    to humans.
+                </p>
+
+                <div class="gallery-accent life-accent"></div>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FEATURED COLLECTION
+===================================================== -->
+
+<section class="collection-section"
+         id="collection">
+
+    <div class="section-heading">
+
+        <div>
+
+            <p class="section-label">
+                03 — COLLECTION
+            </p>
+
+            <h2>
+                Featured specimens.
+            </h2>
+
+        </div>
+
+
+        <a href="{{ url_for('artifacts') }}"
+           class="view-link">
+
+            View Collection
+            <span>→</span>
+
+        </a>
+
+    </div>
+
+
+
+    <div class="artifact-grid">
+
+
+        <!-- CARD 1 -->
+
+        <article class="artifact-card">
+
+            <div class="artifact-image">
+
+                <img
+                    src="https://media.licdn.com/dms/image/v2/D5622AQFYkvivTSS5Aw/feedshare-shrink_800/B56ZrGWrrAJ8Bs-/0/1764264447323?e=2147483647&t=xYC6BgX6WRzq-suXu1hzdL38AYO3WKujjjmitjlXOeQ&v=beta"
+                    alt="Minerals and gemstones at GSI Geoscience Museum"
+                >
+
+            </div>
+
+
+            <div class="artifact-info">
+
+                <span>
+                    MINERALS & GEMSTONES
+                </span>
+
+                <h3>
+                    Minerals & Gemstones
+                </h3>
+
+                <p>
+                    Explore vibrant minerals and gemstone
+                    specimens presented in the museum's
+                    geological collection.
+                </p>
+
+                <a href="{{ url_for('artifacts') }}"
+                   class="card-link">
+
+                    Explore
+                    <span>→</span>
+
+                </a>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- CARD 2 -->
+
+        <article class="artifact-card">
+
+            <div class="artifact-image">
+
+                <img
+                    src="https://pbs.twimg.com/media/GqMkjMhXkAA_BXe.jpg"
+                    alt="Fossil and dinosaur exhibit at GSI Geoscience Museum"
+                >
+
+            </div>
+
+
+            <div class="artifact-info">
+
+                <span>
+                    PALEONTOLOGY
+                </span>
+
+                <h3>
+                    Fossils & Ancient Life
+                </h3>
+
+                <p>
+                    Discover prehistoric life and explore
+                    the evolution of organisms through
+                    geological time.
+                </p>
+
+                <a href="{{ url_for('artifacts') }}"
+                   class="card-link">
+
+                    Explore
+                    <span>→</span>
+
+                </a>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- CARD 3 -->
+
+        <article class="artifact-card">
+
+            <div class="artifact-image">
+
+                <img
+                    src="https://media.licdn.com/dms/image/v2/D5622AQGuO38uS_D2-A/feedshare-shrink_800/B56ZPejSTFG8Ao-/0/1734605614431?e=2147483647&t=wXWigti4Nyk_zMJD2Oz3UHjYq5CWUNlyzBprf94IE28&v=beta"
+                    alt="Earth science and earthquake exhibit at GSI Geoscience Museum"
+                >
+
+            </div>
+
+
+            <div class="artifact-info">
+
+                <span>
+                    EARTH SCIENCE
+                </span>
+
+                <h3>
+                    Earth in Motion
+                </h3>
+
+                <p>
+                    Learn about earthquakes and the powerful
+                    geological processes that shape our planet.
+                </p>
+
+                <a href="{{ url_for('artifacts') }}"
+                   class="card-link">
+
+                    Explore
+                    <span>→</span>
+
+                </a>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     VISIT
+===================================================== -->
+
+<section class="visit-section"
+         id="visit">
+
+    <div class="visit-image">
+
+        <img 
+            src="https://static.where-e.com/India/Madhya_Pradesh/Gwalior/Gsi-Geoscience-Museum-Gwalior_0f085e8875d75a16c02d64197428873f.jpg"
+            alt="GSI Geoscience Museum building in Gwalior"
+        >
+
+        <div class="visit-overlay"></div>
+
+    </div>
+
+
+    <div class="visit-content">
+
+        <p class="section-label">
+            04 — VISIT
+        </p>
+
+        <h2>
+            Come discover<br>
+            Earth's story.
+        </h2>
+
+        <p class="visit-address">
+            <strong>
+                GSI Geoscience Museum
+            </strong>
+            <br>
+            Victoria Building, Jiwaji Chowk,
+            Maharaj Bada, Gwalior,
+            Madhya Pradesh — 474001
+        </p>
+
+
+        <div class="visit-note">
+
+            <strong>
+                A place for curiosity.
+            </strong>
+
+            <span>
+                Students · Families · Researchers · Explorers
+            </span>
+
+        </div>
+
+
+        <!-- Replace the # with your Google Maps share link -->
+
+        <a href="https://www.google.com/maps/search/?api=1&query=GSI+Geoscience+Museum+Gwalior"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="maps-button">
+
+            Get Directions
+
+            <span>↗</span>
+
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FINAL CTA
+===================================================== -->
+
+<section class="final-cta">
+
+    <p class="section-label">
+        DISCOVER MORE
+    </p>
+
+    <h2>
+        Every rock has a story.
+        <br>
+        Every fossil holds a memory.
+    </h2>
+
+    <a href="{{ url_for('artifacts') }}"
+       class="primary-button">
+
+        Explore the Collection
+
+        <span>→</span>
+
+    </a>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="museum-footer">
+
+
+    <div class="footer-brand">
+
+        <div class="logo-mark">
+            G
+        </div>
+
+        <div>
+
+            <strong>
+                GeoGwalior
+            </strong>
+
+            <span>
+                Gwalior, Madhya Pradesh
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-links">
+
+        <a href="{{ url_for('index') }}">
+            Home
+        </a>
+
+        <a href="#about">
+            About
+        </a>
+
+        <a href="#galleries">
+            Galleries
+        </a>
+
+        <a href="#collection">
+            Collection
+        </a>
+
+        <a href="#visit">
+            Visit
+        </a>
+
+        <a href="{{ url_for('login') }}">
+            Admin
+        </a>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <span>
+            Unofficial student digital companion project
+        </span>
+
+        <span>
+            © 2026 GeoGwalior
+        </span>
+
+    </div>
+
+</footer>
+
+
+</body>
+</html>

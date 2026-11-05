@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}Digital Artifacts | GeoGwalior{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <div class="eyebrow">Digital Collection</div>
+    <h1>Explore Artifacts</h1>
+    <p>Discover objects, materials and cultural records preserved in the digital collection.</p>
+</section>
+
+<section class="artifact-search card">
+    <form method="GET" action="{{ url_for('artifacts') }}">
+        <div class="search-main">
+            <input type="text" name="q" value="{{ query }}" placeholder="Search artifacts, materials, regions...">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+        <div class="artifact-filters">
+            <select name="category">
+                <option value="">All Categories</option>
+                {% for category in categories %}
+                <option value="{{ category }}" {% if selected_category == category %}selected{% endif %}>{{ category }}</option>
+                {% endfor %}
+            </select>
+            <select name="region">
+                <option value="">All Regions</option>
+                {% for region in regions %}
+                <option value="{{ region }}" {% if selected_region == region %}selected{% endif %}>{{ region }}</option>
+                {% endfor %}
+            </select>
+            <select name="material">
+                <option value="">All Materials</option>
+                {% for material in materials %}
+                <option value="{{ material }}" {% if selected_material == material %}selected{% endif %}>{{ material }}</option>
+                {% endfor %}
+            </select>
+            <select name="historical_period">
+                <option value="">All Periods</option>
+                {% for period in historical_periods %}
+                <option value="{{ period }}" {% if selected_historical_period == period %}selected{% endif %}>{{ period }}</option>
+                {% endfor %}
+            </select>
+            <a href="{{ url_for('artifacts') }}" class="btn btn-warning">Clear</a>
+        </div>
+    </form>
+</section>
+
+<div class="artifact-results-header">
+    <div>
+        <span class="eyebrow">Collection</span>
+        <h2>{{ records|length }} Artifacts</h2>
+    </div>
+</div>
+
+{% if records %}
+<section class="artifact-grid">
+    {% for artifact in records %}
+    <article class="artifact-card">
+        <div class="artifact-image">
+            {% if artifact.image_url %}
+                <img src="{{ artifact.image_url }}" alt="{{ artifact.object_name or 'Museum artifact' }}" loading="lazy">
+            {% else %}
+                <div class="artifact-placeholder"><span>✦</span><small>Digital Artifact</small></div>
+            {% endif %}
+        </div>
+        <div class="artifact-card-content">
+            <span class="artifact-category">{{ artifact.category or "Unclassified" }}</span>
+            <h3>{{ artifact.object_name or "Untitled Artifact" }}</h3>
+            <p class="artifact-region">{{ artifact.region or "Region not recorded" }}</p>
+            {% if artifact.material %}<p class="artifact-material">{{ artifact.material }}</p>{% endif %}
+            <a href="{{ url_for('artifact_detail', id=artifact.id) }}" class="artifact-link">View Details →</a>
+        </div>
+    </article>
+    {% endfor %}
+</section>
+{% else %}
+<section class="card empty-state">
+    <h3>No artifacts found</h3>
+    <p>Try changing your search or filters.</p>
+</section>
+{% endif %}
+{% endblock %}

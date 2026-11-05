@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}{{ record.object_name or "Artifact Details" }} | GeoGwalior{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <div class="eyebrow">Digital Collection / Artifact Details</div>
+    <h1>{{ record.object_name or "Untitled Artifact" }}</h1>
+    <p>{{ record.category or "Unclassified" }}{% if record.region %} · {{ record.region }}{% endif %}</p>
+</section>
+
+<section class="card artifact-detail">
+    {% if record.image_url %}
+        <img class="artifact-detail-image" src="{{ record.image_url }}" alt="{{ record.object_name or 'Museum artifact' }}">
+    {% endif %}
+
+    {% if record.description %}
+        <h2>About this artifact</h2>
+        <p>{{ record.description }}</p>
+    {% endif %}
+
+    <div class="detail-grid">
+        {% for label, value in [
+            ("Accession No", record.accession_no),
+            ("Code No", record.code_no),
+            ("Sr No", record.sr_no),
+            ("Date", record.date),
+            ("Pieces", record.pieces),
+            ("Category", record.category),
+            ("Material", record.material),
+            ("Dimension", record.dimension),
+            ("Form", record.form),
+            ("Region", record.region),
+            ("Historical Period", record.historical_period),
+            ("Creator", record.creator),
+            ("Purchase Date", record.purchase_date),
+            ("Amount", record.amount),
+            ("Museum", record.museum_name),
+            ("Exhibition", record.exhibition_name)
+        ] %}
+            {% if value %}
+            <div class="detail-item">
+                <span>{{ label }}</span>
+                <strong>{{ value }}</strong>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    {% if record.cultural_significance %}
+        <h2>Cultural Significance</h2>
+        <p>{{ record.cultural_significance }}</p>
+    {% endif %}
+    {% if record.remarks %}
+        <h2>Remarks</h2>
+        <p>{{ record.remarks }}</p>
+    {% endif %}
+    {% if record.video_url %}
+        <p><a href="{{ record.video_url }}" target="_blank" rel="noopener noreferrer">Watch related video ↗</a></p>
+    {% endif %}
+    {% if record.model_3d_url %}
+        <p><a href="{{ record.model_3d_url }}" target="_blank" rel="noopener noreferrer">View 3D model ↗</a></p>
+    {% endif %}
+    <a href="{{ url_for('artifacts') }}" class="btn btn-primary">Back to Collection</a>
+</section>
+{% endblock %}
